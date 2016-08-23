@@ -1,0 +1,21 @@
+--Q1
+--It's time for the seniors to graduate. Remove all 12th graders from Highschooler. 
+
+Delete 
+from Highschooler
+where grade=12;
+
+--Q2
+--If two students A and B are friends, and A likes B but not vice-versa, remove the Likes tuple. 
+
+--Q3
+--For all cases where A is friends with B, and B is friends with C, add a new friendship for the pair A and C. Do not add duplicate friendships, friendships that already exist, or friendships with oneself. (This one is a bit challenging; congratulations if you get it right.) 
+
+insert into Friend 
+select F1.iD1, F2.iD2 
+from Friend F1 join Friend F2 on F1.iD2 = F2.iD1
+where F1.iD1 <> F2.iD2
+except 
+select * 
+from Friend;
+
